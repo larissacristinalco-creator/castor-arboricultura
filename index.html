@@ -1,0 +1,698 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<link rel="icon" type="image/png" href="img/logo-marrom.png">
+<title>Castor Arboricultura</title>
+<meta name="description" content="Poda e supressão de árvores em Porto Alegre e Região Metropolitana com segurança e licenciamento ambiental. Solicite seu orçamento grátis pelo WhatsApp.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Candal&family=Montserrat:wght@400;500;600;700&display=swap">
+<style>
+/* Layout: one-page "Traço do Castor" – creme base, contornos marrons de 3px, sombras chapadas, laranja como cor de ação */
+:root{
+  --creme:#FBFDE9; --creme-2:#F4EFD3; --marrom:#482F18; --profundo:#2B1B0C; --laranja:#F27128;
+  --texto:#5E4733; --texto-claro:#D9CFB3; --branco:#FFFFFF;
+  --display:"Candal","Arial Black",system-ui,sans-serif;
+  --body:"Montserrat","Segoe UI",system-ui,sans-serif;
+  --traco:3px solid var(--marrom);
+  --sombra:6px 6px 0 var(--marrom);
+  --sombra-lg:10px 10px 0 var(--marrom);
+  --gutter:clamp(16px,5vw,120px);
+  --ease:cubic-bezier(.2,.8,.2,1);
+  color-scheme:light;
+}
+*{box-sizing:border-box}
+[hidden]{display:none!important}
+html{scroll-behavior:smooth;scroll-padding-top:96px}
+body{margin:0;background:var(--creme);color:var(--marrom);font-family:var(--body);font-size:16px;line-height:1.6;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+img{max-width:100%;display:block}
+h1,h2,h3{font-family:var(--display);font-weight:400;margin:0;line-height:1.1;text-wrap:balance}
+p{margin:0}
+a{color:inherit}
+:focus-visible{outline:3px solid var(--laranja);outline-offset:3px;border-radius:6px}
+.wrap{padding-inline:var(--gutter);max-width:1440px;margin-inline:auto}
+.eyebrow{font-size:13px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--laranja)}
+.h2{font-size:clamp(32px,4.2vw,48px)}
+.lead{font-size:17px;line-height:1.7;color:var(--texto);max-width:62ch}
+.sec{padding-block:clamp(64px,9vw,112px)}
+.sec-head{display:flex;justify-content:space-between;align-items:flex-end;gap:24px;flex-wrap:wrap;margin-bottom:clamp(32px,5vw,52px)}
+.sec-head>div{display:flex;flex-direction:column;gap:14px;min-width:0}
+.alt{background:var(--creme-2)}
+.line-top{border-top:var(--traco)}
+
+/* Botões */
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:10px;min-height:56px;padding:0 26px;border:var(--traco);border-radius:14px;background:var(--laranja);color:var(--profundo);font:700 16px/1 var(--body);text-decoration:none;box-shadow:var(--sombra);cursor:pointer;transition:transform .18s var(--ease),box-shadow .18s var(--ease),background .2s}
+.btn:hover{transform:translate(-2px,-2px);box-shadow:8px 8px 0 var(--marrom)}
+.btn:active{transform:translate(4px,4px);box-shadow:2px 2px 0 var(--marrom)}
+.btn.ghost{background:var(--creme)}
+.btn.light{background:var(--creme);border-color:var(--creme);box-shadow:none;color:var(--marrom);border-radius:999px}
+.btn.light:hover{box-shadow:6px 6px 0 var(--laranja)}
+.btn svg{flex:none}
+.ico{width:24px;height:24px;fill:none;stroke:currentColor;stroke-width:2.4;stroke-linecap:round;stroke-linejoin:round}
+
+/* Foto com gradiente translúcido */
+.ph{position:relative;overflow:hidden;background:var(--profundo)}
+.ph img{width:100%;height:100%;object-fit:cover;transition:transform 1.2s var(--ease)}
+@keyframes drift{from{background-position:0 0}to{background-position:0 100%}}
+
+/* Header */
+.top{position:sticky;top:env(safe-area-inset-top,0px);z-index:50;background:var(--creme);border-bottom:var(--traco);transition:box-shadow .3s}
+.top .wrap{display:flex;align-items:center;justify-content:space-between;gap:24px;height:96px;transition:height .3s var(--ease)}
+.top.small .wrap{height:76px}
+.top.small{box-shadow:0 6px 0 rgba(72,47,24,.08)}
+.brand img{height:64px;width:auto;transition:height .3s var(--ease)}
+.top.small .brand img{height:52px}
+.nav{display:flex;gap:30px}
+.nav a{font-weight:500;font-size:15px;text-decoration:none;position:relative;padding:6px 0}
+.nav a::after{content:"";position:absolute;left:0;right:0;bottom:0;height:3px;border-radius:3px;background:var(--laranja);transform:scaleX(0);transform-origin:left;transition:transform .25s var(--ease)}
+.nav a:hover::after{transform:scaleX(1)}
+.top .btn{min-height:48px;padding:0 20px;font-size:15px;box-shadow:4px 4px 0 var(--marrom)}
+.menu-btn{display:none;width:48px;height:48px;border:var(--traco);border-radius:12px;background:var(--creme);cursor:pointer;align-items:center;justify-content:center;color:var(--marrom)}
+.mobile-nav{display:none}
+
+/* Hero */
+.hero{padding-block:clamp(48px,7vw,96px) clamp(72px,8vw,110px)}
+.hero .wrap{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,520px);gap:clamp(32px,5vw,72px);align-items:center}
+.hero-text{display:flex;flex-direction:column;gap:24px;min-width:0}
+.hero h1{font-size:clamp(46px,6.6vw,88px);line-height:1.02;color:var(--marrom)}
+.hero h1 .w{display:inline-block;animation:rise .9s var(--ease) both}
+.hero .kicker{font-family:var(--display);font-size:clamp(20px,2vw,25px);line-height:1.3}
+.hero .lead{font-size:18px}
+.hero-ctas{display:flex;gap:16px;flex-wrap:wrap;margin-top:6px}
+@keyframes rise{from{transform:translateY(.35em) rotate(2deg)}to{transform:none}}
+.hero-art{position:relative;height:clamp(460px,46vw,620px);min-width:0}
+.hero-photo{position:absolute;right:0;top:0;width:86%;height:92%;border:var(--traco);border-radius:28px;box-shadow:var(--sombra-lg);animation:pop 1s .15s var(--ease) both}
+.hero-photo img{animation:kenburns 18s ease-in-out infinite alternate}
+@keyframes kenburns{from{transform:scale(1.04)}to{transform:scale(1.14) translate(-2%,2%)}}
+@keyframes pop{from{transform:translate(10px,14px) rotate(1.5deg)}to{transform:none}}
+.badge{position:absolute;left:0;bottom:0;width:clamp(170px,16vw,220px);aspect-ratio:1;border-radius:50%;background:var(--creme);border:var(--traco);box-shadow:var(--sombra);display:grid;place-items:center;z-index:3}
+.badge img{width:42%}
+.badge svg{position:absolute;inset:6px;width:calc(100% - 12px);height:calc(100% - 12px);animation:spin 60s linear infinite}
+.badge text{font:700 11.5px var(--body);letter-spacing:.22em;fill:var(--marrom)}
+@keyframes spin{to{transform:rotate(360deg)}}
+.sticker{position:absolute;right:-12px;top:34px;z-index:3;background:var(--marrom);color:var(--creme);font-family:var(--display);font-size:16px;padding:10px 16px;border-radius:10px;transform:rotate(6deg);animation:wiggle 3.2s ease-in-out infinite}
+@keyframes wiggle{0%,100%{transform:rotate(6deg)}50%{transform:rotate(1deg) translateY(-4px)}}
+
+/* Faixa rolante */
+.ticker{background:var(--laranja);border-block:var(--traco);overflow:hidden;padding-block:16px}
+.ticker-track{display:flex;width:max-content;animation:marquee 32s linear infinite}
+.ticker span{display:inline-flex;align-items:center;gap:22px;padding-right:22px;font-family:var(--display);font-size:22px;color:var(--profundo);white-space:nowrap}
+.ticker .ico{width:22px;height:22px;stroke:var(--profundo)}
+@keyframes marquee{to{transform:translateX(-50%)}}
+
+/* Credibilidade (estilo B) */
+.cred{padding-block:clamp(56px,7vw,96px) 0}
+.cred-box{background:var(--marrom);border-radius:24px;padding:clamp(28px,3vw,40px);display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:28px}
+.cred-item{display:flex;flex-direction:column;gap:12px;min-width:0}
+.cred-item .dot{width:56px;height:56px;border-radius:50%;background:rgba(242,113,40,.16);color:var(--laranja);display:grid;place-items:center;transition:transform .4s var(--ease)}
+.cred-item:hover .dot{transform:rotate(-12deg) scale(1.08)}
+.cred-item strong{font-family:var(--display);font-weight:400;font-size:19px;color:var(--creme);line-height:1.2}
+.cred-item span{font-size:14px;line-height:1.5;color:var(--texto-claro)}
+
+/* Sobre */
+.about-grid{display:grid;grid-template-columns:minmax(0,520px) minmax(0,1fr);gap:clamp(32px,5vw,72px);align-items:center}
+.about-photo{aspect-ratio:1/1;border:var(--traco);border-radius:28px;box-shadow:10px 10px 0 var(--laranja)}
+.about-text{display:flex;flex-direction:column;gap:20px;min-width:0}
+.who{margin-top:clamp(48px,6vw,72px);display:flex;flex-direction:column;gap:22px}
+.who h3{font-size:26px}
+.cards3{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:28px}
+.card{background:var(--branco);border:var(--traco);border-radius:24px;box-shadow:var(--sombra);transition:transform .25s var(--ease),box-shadow .25s var(--ease)}
+.card:hover{transform:translate(-3px,-3px);box-shadow:9px 9px 0 var(--marrom)}
+.who .card{padding:28px;display:flex;flex-direction:column;gap:12px}
+.tile{width:60px;height:60px;border-radius:16px;background:var(--laranja);border:var(--traco);display:grid;place-items:center;color:var(--marrom)}
+.tile .ico{width:30px;height:30px;stroke-width:2.6}
+.card h4{font-family:var(--display);font-weight:400;font-size:21px;margin:0}
+.card p{font-size:15px;line-height:1.6;color:var(--texto)}
+.quote{margin-top:clamp(48px,6vw,72px);background:var(--marrom);border-radius:24px;padding:clamp(28px,3.5vw,44px) clamp(24px,4vw,56px);display:flex;gap:32px;align-items:center}
+.quote img{width:88px;flex:none}
+.quote p{font-family:var(--display);font-size:clamp(22px,2.4vw,31px);line-height:1.3;color:var(--creme)}
+.quote em{font-style:normal;color:var(--laranja)}
+
+/* Serviços */
+.services{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:32px}
+.svc{overflow:hidden;display:flex;flex-direction:column;position:relative;text-decoration:none;color:inherit}
+.svc .ph{height:220px;border-bottom:var(--traco)}
+.svc:hover .ph img{transform:scale(1.07)}
+.svc .body{padding:26px;display:flex;flex-direction:column;gap:10px;flex-grow:1}
+.svc h3{font-size:21px;line-height:1.25}
+.svc p{font-size:15px;line-height:1.6;color:var(--texto)}
+.svc .more{margin-top:auto;padding-top:8px;display:flex;gap:8px;align-items:center;font-size:14px;font-weight:700}
+.svc .more .ico{width:18px;height:18px;stroke:var(--laranja);stroke-width:2.8;transition:transform .25s var(--ease)}
+.svc:hover .more .ico{transform:translateX(5px)}
+.tag{position:absolute;right:16px;top:16px;z-index:2;background:var(--laranja);border:var(--traco);color:var(--profundo);padding:6px 12px;border-radius:10px;font-family:var(--display);font-size:13px;transform:rotate(4deg)}
+
+/* Parceria (estilo B) */
+.partner{background:var(--marrom);border-radius:28px;padding:clamp(28px,3vw,40px) clamp(24px,4vw,56px);display:grid;grid-template-columns:minmax(0,1fr) auto;gap:clamp(36px,5vw,72px);align-items:center}
+.partner .txt{display:flex;flex-direction:column;gap:14px;min-width:0}
+.partner h2{font-size:clamp(26px,2.8vw,34px)}
+.partner h2{color:var(--creme)}
+.partner p{color:var(--texto-claro);font-size:15.5px;line-height:1.65;max-width:68ch}
+.luz{width:clamp(220px,22vw,300px);aspect-ratio:1;border-radius:50%;border:4px solid var(--laranja);box-shadow:8px 8px 0 var(--laranja);overflow:hidden;margin-right:8px;background:var(--creme);transition:transform .4s var(--ease)}
+.luz:hover{transform:rotate(-3deg) scale(1.02)}
+.luz img{width:100%;height:100%;object-fit:cover}
+
+/* Como funciona */
+.steps{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:24px;position:relative}
+.steps::before{content:"";position:absolute;left:8%;right:8%;top:54px;height:3px;background:repeating-linear-gradient(90deg,var(--marrom) 0 10px,transparent 10px 18px);transform:scaleX(0);transform-origin:left;transition:transform 1.4s var(--ease);z-index:0}
+.steps.in::before{transform:scaleX(1)}
+.step{position:relative;z-index:1;padding:28px;display:flex;flex-direction:column;gap:14px}
+.step.cond{background:var(--creme-2);border-style:dashed;box-shadow:none}
+.step .n{width:52px;height:52px;border-radius:14px;background:var(--laranja);border:var(--traco);display:grid;place-items:center;font-family:var(--display);font-size:22px;color:var(--profundo)}
+.step h3{font-size:19px}
+.step small{font-size:13px;font-weight:600;color:var(--texto)}
+
+/* Área */
+.area{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,520px);gap:clamp(32px,5vw,72px);align-items:center}
+.area-text{display:flex;flex-direction:column;gap:24px;min-width:0}
+.chips{display:flex;flex-wrap:wrap;gap:10px}
+.chip{display:inline-flex;gap:6px;align-items:center;padding:9px 14px;border:var(--traco);border-radius:12px;background:var(--branco);font:600 15px var(--body);color:var(--marrom);cursor:default;transition:background .2s,transform .2s}
+.chip .ico{width:16px;height:16px;stroke:var(--laranja);stroke-width:2.6}
+.chip:hover,.chip.on{background:var(--laranja);transform:translateY(-2px)}
+.chip:hover .ico,.chip.on .ico{stroke:var(--profundo)}
+.map{aspect-ratio:520/440;border:var(--traco);border-radius:28px;box-shadow:10px 10px 0 var(--laranja);background:var(--creme-2);overflow:hidden;position:relative}
+.map svg{width:100%;height:100%;display:block}
+.pin circle{fill:var(--laranja);stroke:var(--marrom);stroke-width:3;transition:r .25s}
+.pin.on circle,.pin:hover circle{r:15}
+.pin text{font:600 12px var(--body);fill:var(--marrom);opacity:0;transition:opacity .2s}
+.pin.on text,.pin:hover text,.pin.main text{opacity:1}
+.pin.main text{font-family:var(--display);font-size:15px}
+.map .ring{fill:none;stroke:var(--laranja);stroke-width:3;transform-box:fill-box;transform-origin:center;animation:ring 2.4s ease-out infinite}
+@keyframes ring{from{transform:scale(.6);opacity:.9}to{transform:scale(2.4);opacity:0}}
+
+/* Antes e depois */
+.compare-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:32px}
+.cmp{display:flex;flex-direction:column;gap:14px;min-width:0}
+.cmp-box{position:relative;aspect-ratio:4/5;border:var(--traco);border-radius:24px;box-shadow:var(--sombra);overflow:hidden;background:var(--profundo);touch-action:pan-y}
+.cmp-box img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;user-select:none;pointer-events:none}
+.cmp-box .after{clip-path:inset(0 0 0 var(--x,50%))}
+.cmp-box .bar{position:absolute;top:0;bottom:0;left:var(--x,50%);width:3px;margin-left:-1.5px;background:var(--creme);pointer-events:none}
+.cmp-box .knob{position:absolute;top:50%;left:var(--x,50%);width:52px;height:52px;margin:-26px 0 0 -26px;border-radius:50%;background:var(--laranja);border:var(--traco);display:grid;place-items:center;pointer-events:none;box-shadow:3px 3px 0 var(--marrom)}
+.cmp-box .knob .ico{width:24px;height:24px;stroke:var(--profundo)}
+.cmp-box input{position:absolute;inset:0;width:100%;height:100%;opacity:0;cursor:ew-resize;margin:0}
+.cmp-box .lbl{position:absolute;top:14px;z-index:2;background:var(--marrom);color:var(--creme);font:700 12px var(--body);letter-spacing:.1em;text-transform:uppercase;padding:6px 10px;border-radius:8px;pointer-events:none}
+.cmp-box .lbl.l{left:14px}.cmp-box .lbl.r{right:14px;background:var(--laranja);color:var(--profundo)}
+.cmp-box.static img{position:static}
+.cmp figcaption,.cmp p{font-size:15px;color:var(--texto)}
+.cmp strong{color:var(--marrom)}
+.insta{margin-top:clamp(40px,5vw,56px);display:flex;flex-direction:column;gap:18px}
+.insta-head{display:flex;justify-content:space-between;align-items:center;gap:16px;flex-wrap:wrap}
+.insta-head h3{font-size:22px}
+.insta-grid{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:20px}
+.insta-grid a{aspect-ratio:3/4;border:var(--traco);border-radius:20px;box-shadow:4px 4px 0 var(--marrom);transition:transform .25s var(--ease),box-shadow .25s var(--ease)}
+.insta-grid a:hover{transform:translate(-3px,-3px) rotate(-1deg);box-shadow:8px 8px 0 var(--marrom)}
+.insta-grid a:hover img{transform:scale(1.08)}
+.insta-grid .ig{position:absolute;right:12px;top:12px;z-index:2;color:var(--creme)}
+
+/* FAQ */
+.faq{display:grid;grid-template-columns:minmax(0,360px) minmax(0,1fr);gap:clamp(32px,5vw,72px);align-items:start}
+.faq-side{display:flex;flex-direction:column;gap:22px;position:sticky;top:120px}
+.faq-list{display:flex;flex-direction:column;gap:14px;min-width:0}
+details{background:var(--creme);border:var(--traco);border-radius:18px;transition:background .25s,box-shadow .25s}
+details[open]{background:var(--branco);box-shadow:var(--sombra)}
+summary{list-style:none;cursor:pointer;display:flex;justify-content:space-between;align-items:center;gap:20px;padding:20px 24px;font-family:var(--display);font-size:18px;line-height:1.3}
+summary::-webkit-details-marker{display:none}
+summary .pm{width:36px;height:36px;flex:none;border-radius:10px;border:var(--traco);background:var(--creme);display:grid;place-items:center;transition:transform .3s var(--ease),background .25s}
+summary .pm .ico{width:18px;height:18px;stroke-width:3}
+details[open] summary .pm{transform:rotate(45deg);background:var(--laranja)}
+details .ans{padding:0 24px 22px;font-size:15px;line-height:1.7;color:var(--texto);max-width:70ch}
+
+/* Formulário */
+.quote-sec{display:grid;grid-template-columns:minmax(0,380px) minmax(0,1fr);gap:clamp(32px,5vw,64px);align-items:start}
+.q-side{display:flex;flex-direction:column;gap:22px}
+.wa-card{display:flex;gap:14px;align-items:center;background:var(--marrom);color:var(--creme);border-radius:20px;padding:20px 24px;text-decoration:none;transition:transform .25s var(--ease)}
+.wa-card:hover{transform:translateY(-3px)}
+.wa-card .c{width:52px;height:52px;flex:none;border-radius:50%;background:var(--laranja);color:var(--profundo);display:grid;place-items:center}
+.wa-card small{display:block;font-size:14px;color:var(--texto-claro)}
+.wa-card b{font-family:var(--display);font-weight:400;font-size:20px}
+.q-photo{aspect-ratio:9/10;border:var(--traco);border-radius:24px;box-shadow:10px 10px 0 var(--laranja)}
+form.card{padding:clamp(24px,3.5vw,44px);display:flex;flex-direction:column;gap:24px;box-shadow:var(--sombra-lg)}
+form.card:hover{transform:none;box-shadow:var(--sombra-lg)}
+.row2{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:20px}
+.f{display:flex;flex-direction:column;gap:8px;min-width:0}
+.f label,.f legend{font-size:14px;font-weight:700;padding:0}
+fieldset{border:0;margin:0;padding:0;min-width:0}
+fieldset legend{margin-bottom:10px}
+.f input[type=text],.f input[type=tel],.f select,.f textarea{width:100%;min-height:54px;border:2px solid var(--marrom);border-radius:12px;background:var(--creme);padding:0 16px;font:500 15px var(--body);color:var(--marrom);transition:box-shadow .2s}
+.f textarea{padding:14px 16px;min-height:110px;resize:vertical}
+.f input:focus,.f select:focus,.f textarea:focus{outline:none;box-shadow:4px 4px 0 var(--laranja)}
+.opts{display:flex;flex-wrap:wrap;gap:10px}
+.opt{position:relative}
+.opt input{position:absolute;opacity:0;inset:0;margin:0;cursor:pointer}
+.opt span{display:inline-flex;align-items:center;min-height:46px;padding:0 16px;border:2px solid var(--marrom);border-radius:12px;background:var(--creme);font-size:14px;font-weight:600;transition:background .2s,transform .15s}
+.opt input:checked+span{background:var(--laranja);transform:translateY(-2px);box-shadow:3px 3px 0 var(--marrom)}
+.opt input:focus-visible+span{outline:3px solid var(--laranja);outline-offset:2px}
+.drop{position:relative;min-height:110px;border:2px dashed var(--marrom);border-radius:14px;background:var(--creme);display:flex;flex-direction:column;align-items:center;justify-content:center;gap:6px;text-align:center;padding:16px;font-size:15px;font-weight:600;color:var(--texto);transition:background .2s}
+.drop:hover,.drop.over{background:var(--creme-2)}
+.drop input{position:absolute;inset:0;opacity:0;cursor:pointer}
+.drop .ico{stroke:var(--laranja);width:26px;height:26px}
+.err{color:#A3361A;font-size:13px;font-weight:600}
+.f.bad input{border-color:#A3361A}
+.submit{min-height:64px;font-size:18px}
+.note{font-size:14px;color:var(--texto);text-align:center}
+.done{display:flex;flex-direction:column;gap:16px;align-items:flex-start}
+.done .big{font-family:var(--display);font-size:28px}
+.tip{display:flex;gap:12px;align-items:flex-start;background:var(--creme-2);border-radius:14px;padding:16px 18px;font-size:14px;line-height:1.55;color:var(--texto)}
+.tip .ico{flex:none;stroke:var(--laranja)}
+
+/* Rodapé */
+footer{background:var(--marrom);color:var(--creme);padding-block:64px 32px}
+.foot{display:grid;grid-template-columns:minmax(0,1.3fr) minmax(0,1fr) minmax(0,1fr);gap:48px}
+.foot .b{display:flex;gap:20px;align-items:center}
+.foot .b img{width:88px}
+.foot p,.foot span{color:var(--texto-claro);font-size:15px;line-height:1.6}
+.foot h4{font-family:var(--body);font-size:15px;margin:0 0 10px}
+.foot a{display:block;color:var(--creme);font-size:15px;margin-bottom:6px}
+.foot a.soc{display:flex;align-items:center;gap:12px;text-decoration:none;margin-bottom:12px}
+.foot a.soc:hover{color:var(--laranja)}
+.si{width:38px;height:38px;flex:none;border-radius:50%;background:var(--laranja);color:var(--profundo);display:grid;place-items:center;transition:transform .25s var(--ease)}
+.si .ico{width:20px;height:20px}
+.foot a.soc:hover .si{transform:rotate(-10deg) scale(1.08)}
+.legal{margin-top:40px;padding-top:20px;border-top:1px solid rgba(251,253,233,.2);display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap;font-size:13px;color:var(--texto-claro)}
+
+/* WhatsApp flutuante e barra mobile */
+.fab{position:fixed;right:24px;bottom:calc(24px + env(safe-area-inset-bottom,0px));z-index:60;width:66px;height:66px;border-radius:50%;background:var(--laranja);border:var(--traco);box-shadow:4px 4px 0 var(--marrom);display:grid;place-items:center;color:var(--profundo);transition:transform .2s var(--ease)}
+.fab:hover{transform:scale(1.07) rotate(-6deg)}
+.fab::before{content:"";position:absolute;inset:-3px;border-radius:50%;border:3px solid var(--laranja);animation:pulse 2.4s ease-out infinite}
+.fab .ico{width:30px;height:30px}
+@keyframes pulse{from{transform:scale(1);opacity:.8}to{transform:scale(1.6);opacity:0}}
+.mbar{display:none}
+
+/* Reveal ao rolar: o conteúdo fica sempre visível; só desliza */
+.js .rv.pre{transform:translateY(36px);transition:transform .9s var(--ease)}
+.js .rv.pre.in{transform:none}
+
+/* Responsivo */
+@media (max-width:1080px){
+  .nav,.top .btn{display:none}
+  .menu-btn{display:inline-flex}
+  .mobile-nav{display:block;position:fixed;inset:76px 0 auto 0;z-index:49;background:var(--creme);border-bottom:var(--traco);padding:20px var(--gutter) 28px;transform:translateY(-120%);transition:transform .35s var(--ease)}
+  .mobile-nav.open{transform:none}
+  .mobile-nav a{display:block;padding:14px 0;font-family:var(--display);font-size:22px;text-decoration:none;border-bottom:1px solid var(--creme-2)}
+  .cred-box{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .services,.compare-grid{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .steps{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .steps::before{display:none}
+  .insta-grid{grid-template-columns:repeat(3,minmax(0,1fr))}
+  .insta-grid a:nth-child(n+4){display:none}
+}
+@media (max-width:860px){
+  .top .wrap{height:76px}
+  .brand img{height:52px}
+  .hero .wrap,.about-grid,.area,.faq,.quote-sec,.partner{grid-template-columns:minmax(0,1fr)}
+  .hero-art{height:auto;aspect-ratio:1/1.05;max-width:520px;width:100%;margin-inline:auto}
+  .faq-side{position:static}
+  .cards3,.foot{grid-template-columns:minmax(0,1fr)}
+  .luz{margin-inline:auto}
+  .quote{flex-direction:column;align-items:flex-start}
+  .q-photo{display:none}
+}
+@media (max-width:620px){
+  body{font-size:15px}
+  .cred-box,.services,.compare-grid,.steps,.row2{grid-template-columns:minmax(0,1fr)}
+  .insta-grid{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .insta-grid a:nth-child(3){display:none}
+  .hero-ctas .btn{width:100%}
+  .sticker{right:4px;font-size:14px}
+  .badge{width:132px}
+  .badge text{font-size:9.5px}
+  .fab{display:none}
+  .mbar{display:flex;gap:10px;position:fixed;left:0;right:0;bottom:0;z-index:60;background:var(--creme);border-top:var(--traco);padding:10px 16px calc(10px + env(safe-area-inset-bottom,0px))}
+  .mbar .btn{flex:1;min-height:50px;font-size:14px;padding:0 10px;box-shadow:3px 3px 0 var(--marrom)}
+  footer{padding-bottom:110px}
+  .ticker span{font-size:18px}
+}
+@media (prefers-reduced-motion:reduce){
+  *,*::before,*::after{animation:none!important;transition:none!important}
+  html{scroll-behavior:auto}
+  .js .rv.pre{transform:none}
+  .steps::before{transform:none}
+}
+</style>
+</head>
+<body>
+
+
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <symbol id="i-chat" viewBox="0 0 24 24"><path d="M4 20l1.4-4.2A8 8 0 1112 20a8 8 0 01-3.8-1z"/></symbol>
+  <symbol id="i-arrow" viewBox="0 0 24 24"><path d="M5 12h14"/><path d="M13 6l6 6-6 6"/></symbol>
+  <symbol id="i-shield" viewBox="0 0 24 24"><path d="M12 3l7 3v6c0 4.5-3 7.5-7 9-4-1.5-7-4.5-7-9V6l7-3z"/><path d="M9 12l2 2 4-4"/></symbol>
+  <symbol id="i-doc" viewBox="0 0 24 24"><path d="M7 3h7l4 4v14H7z"/><path d="M14 3v4h4"/><path d="M10 14l2 2 3-4"/></symbol>
+  <symbol id="i-helmet" viewBox="0 0 24 24"><path d="M4 16a8 8 0 0116 0"/><path d="M3 16h18v3H3z"/><path d="M10 9V5h4v4"/></symbol>
+  <symbol id="i-leaf" viewBox="0 0 24 24"><path d="M5 19c0-8 6-14 14-14 0 8-6 14-14 14z"/><path d="M5 19l8-8"/></symbol>
+  <symbol id="i-house" viewBox="0 0 24 24"><path d="M3 11l9-7 9 7"/><path d="M5 10v10h14V10"/><path d="M10 20v-6h4v6"/></symbol>
+  <symbol id="i-build" viewBox="0 0 24 24"><path d="M5 21V4h10v17"/><path d="M15 9h4v12"/><path d="M8 8h4M8 12h4M8 16h4"/><path d="M3 21h18"/></symbol>
+  <symbol id="i-crane" viewBox="0 0 24 24"><path d="M4 21h8"/><path d="M8 21V4"/><path d="M8 4l12 3"/><path d="M8 7h12"/><path d="M18 7v5"/><path d="M16 12h4v2h-4z"/></symbol>
+  <symbol id="i-pin" viewBox="0 0 24 24"><path d="M12 21s-7-6.5-7-12a7 7 0 0114 0c0 5.5-7 12-7 12z"/><circle cx="12" cy="9" r="2.5"/></symbol>
+  <symbol id="i-ig" viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><path d="M17.5 6.5h.01"/></symbol>
+  <symbol id="i-up" viewBox="0 0 24 24"><path d="M12 19V5"/><path d="M6 11l6-6 6 6"/></symbol>
+  <symbol id="i-plus" viewBox="0 0 24 24"><path d="M12 5v14M5 12h14"/></symbol>
+  <symbol id="i-lr" viewBox="0 0 24 24"><path d="M9 6l-6 6 6 6"/><path d="M15 6l6 6-6 6"/></symbol>
+  <symbol id="i-menu" viewBox="0 0 24 24"><path d="M4 7h16M4 12h16M4 17h16"/></symbol>
+</svg>
+
+<header class="top" id="top">
+  <div class="wrap">
+    <a class="brand" href="#inicio" aria-label="Castor Arboricultura, início"><img src="img/logo-marrom.png" alt="Castor Arboricultura"></a>
+    <nav class="nav" aria-label="Menu principal">
+      <a href="#servicos">Serviços</a><a href="#licenciamento">Licenciamento</a><a href="#como-funciona">Como funciona</a><a href="#trabalhos">Trabalhos</a><a href="#faq">Dúvidas</a>
+    </nav>
+    <a class="btn" href="#orcamento">Solicitar orçamento</a>
+    <button class="menu-btn" id="menuBtn" aria-label="Abrir menu" aria-expanded="false" aria-controls="mnav"><svg class="ico"><use href="#i-menu"/></svg></button>
+  </div>
+</header>
+<nav class="mobile-nav" id="mnav" aria-label="Menu">
+  <a href="#servicos">Serviços</a><a href="#licenciamento">Licenciamento</a><a href="#como-funciona">Como funciona</a><a href="#trabalhos">Trabalhos</a><a href="#faq">Dúvidas</a><a href="#orcamento">Solicitar orçamento</a>
+</nav>
+
+<main id="inicio">
+<section class="hero">
+  <div class="wrap">
+    <div class="hero-text">
+      <h1 aria-label="Sua árvore em boas mãos."><span class="w">Sua</span> <span class="w" style="animation-delay:.08s">árvore</span> <span class="w" style="animation-delay:.16s">em</span> <span class="w" style="animation-delay:.24s">boas</span> <span class="w" style="animation-delay:.32s">mãos.</span></h1>
+      <p class="kicker">Poda e supressão com técnica, segurança e licenciamento.</p>
+      <p class="lead">Atendemos residências, condomínios e empresas em Porto Alegre e Região Metropolitana, com execução técnica e todo o suporte de licenciamento ambiental.</p>
+      <div class="hero-ctas">
+        <a class="btn" href="#orcamento">Solicitar orçamento grátis</a>
+        <a class="btn ghost" href="https://wa.me/5551981030680?text=Ol%C3%A1%2C%20Castor%21%20Vim%20pelo%20site%20e%20gostaria%20de%20mais%20informa%C3%A7%C3%B5es%20sobre%20os%20servi%C3%A7os." target="_blank" rel="noopener"><svg class="ico"><use href="#i-chat"/></svg>Falar no WhatsApp</a>
+      </div>
+    </div>
+    <div class="hero-art">
+      <div class="hero-photo ph"><img src="img/hero.jpg" alt="Arborista da Castor com equipamento de segurança trabalhando na copa de uma palmeira"></div>
+      <span class="sticker">Orçamento grátis!</span>
+      <div class="badge">
+        <svg viewBox="0 0 200 200" aria-hidden="true"><defs><path id="circ" d="M100,100 m-86,0 a86,86 0 1,1 172,0 a86,86 0 1,1 -172,0"/></defs><text><textPath href="#circ">PODA · SUPRESSÃO · LICENCIAMENTO · PORTO ALEGRE ·</textPath></text></svg>
+        <img src="img/logo-marrom.png" alt="">
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="ticker" aria-hidden="true"><div class="ticker-track">
+  <span>Poda técnica <svg class="ico"><use href="#i-leaf"/></svg> Supressão controlada <svg class="ico"><use href="#i-leaf"/></svg> Licenciamento ambiental <svg class="ico"><use href="#i-leaf"/></svg> Manutenção de condomínios <svg class="ico"><use href="#i-leaf"/></svg> Atendimento emergencial <svg class="ico"><use href="#i-leaf"/></svg> Limpeza completa <svg class="ico"><use href="#i-leaf"/></svg></span>
+  <span>Poda técnica <svg class="ico"><use href="#i-leaf"/></svg> Supressão controlada <svg class="ico"><use href="#i-leaf"/></svg> Licenciamento ambiental <svg class="ico"><use href="#i-leaf"/></svg> Manutenção de condomínios <svg class="ico"><use href="#i-leaf"/></svg> Atendimento emergencial <svg class="ico"><use href="#i-leaf"/></svg> Limpeza completa <svg class="ico"><use href="#i-leaf"/></svg></span>
+</div></div>
+
+<section class="cred wrap" aria-label="Diferenciais">
+  <div class="cred-box rv">
+    <div class="cred-item"><span class="dot"><svg class="ico" style="width:28px;height:28px"><use href="#i-shield"/></svg></span><strong>NR-12 · NR-18 · NR-35</strong><span>Equipe certificada para máquinas, obras e trabalho em altura</span></div>
+    <div class="cred-item"><span class="dot"><svg class="ico" style="width:28px;height:28px"><use href="#i-doc"/></svg></span><strong>Licenciamento ambiental</strong><span>Em parceria com a Luz Consultoria Ambiental</span></div>
+    <div class="cred-item"><span class="dot"><svg class="ico" style="width:28px;height:28px"><use href="#i-helmet"/></svg></span><strong>Trabalho com segurança</strong><span>EPIs, isolamento da área e proteção do imóvel</span></div>
+    <div class="cred-item"><span class="dot"><svg class="ico" style="width:28px;height:28px"><use href="#i-leaf"/></svg></span><strong>Limpeza do local</strong><span>Galhos, troncos e folhas recolhidos ao final</span></div>
+  </div>
+</section>
+
+<section class="sec" id="sobre">
+  <div class="wrap">
+    <div class="about-grid">
+      <div class="about-photo ph rv"><img src="img/equipe.jpg" alt="Profissional da Castor com camiseta da empresa avaliando a copa de uma árvore" loading="lazy"></div>
+      <div class="about-text rv">
+        <span class="eyebrow">Sobre a Castor</span>
+        <h2 class="h2">Arboricultura feita com técnica e respeito ao meio ambiente</h2>
+        <p class="lead">A Castor Arboricultura realiza poda e supressão de árvores em Porto Alegre e Região Metropolitana. Cada serviço começa com uma avaliação da árvore e do local, para definir a técnica mais segura e preservar o que pode ser preservado.</p>
+        <p class="lead">Trabalhamos com equipamentos adequados, equipe preparada e certificada para trabalho em altura e operação com máquinas: proteção do imóvel, isolamento da área e limpeza completa ao final. E como toda intervenção em árvores exige responsabilidade, contamos com uma parceira especializada para cuidar do licenciamento ambiental.</p>
+      </div>
+    </div>
+    <div class="who">
+      <h3>Para quem é</h3>
+      <div class="cards3">
+        <div class="card rv"><span class="tile"><svg class="ico"><use href="#i-house"/></svg></span><h4>Residências</h4><p>Árvores no pátio, na calçada ou próximas à casa.</p></div>
+        <div class="card rv"><span class="tile"><svg class="ico"><use href="#i-build"/></svg></span><h4>Condomínios</h4><p>Manutenção periódica das áreas verdes e atendimento a demandas pontuais.</p></div>
+        <div class="card rv"><span class="tile"><svg class="ico"><use href="#i-crane"/></svg></span><h4>Empresas e obras</h4><p>Supressão regularizada para construções, ampliações e adequação de terrenos.</p></div>
+      </div>
+    </div>
+    <div class="quote rv"><img src="img/logo-creme.png" alt=""><p>Segurança para você, <em>cuidado com a árvore</em> e tranquilidade com a documentação.</p></div>
+  </div>
+</section>
+
+<section class="sec line-top" id="servicos">
+  <div class="wrap">
+    <div class="sec-head">
+      <div><span class="eyebrow">Serviços</span><h2 class="h2">Soluções completas<br>para as suas árvores</h2></div>
+      <a class="btn" href="#orcamento">Quero um orçamento</a>
+    </div>
+    <div class="services">
+      <a class="svc card rv" href="#orcamento" data-servico="Poda"><div class="ph"><img src="img/s-poda.jpg" alt="Poda de pau-ferro com escada" loading="lazy"></div><div class="body"><h3>Poda de árvores</h3><p>Poda técnica para controlar o crescimento, remover galhos secos ou em risco e manter a árvore saudável e segura. Ideal para árvores próximas a telhados, muros, fiações e áreas de circulação.</p><span class="more">Pedir orçamento <svg class="ico"><use href="#i-arrow"/></svg></span></div></a>
+      <a class="svc card rv" href="#orcamento" data-servico="Supressão"><div class="ph"><img src="img/s-supressao.jpg" alt="Arborista desmontando o tronco de uma palmeira por partes" loading="lazy"></div><div class="body"><h3>Supressão de árvores</h3><p>Remoção completa e controlada de árvores mortas, doentes, com risco de queda ou que precisam sair para uma obra. Desmonte por partes quando necessário, protegendo o imóvel e as pessoas ao redor.</p><span class="more">Pedir orçamento <svg class="ico"><use href="#i-arrow"/></svg></span></div></a>
+      <a class="svc card rv" href="#orcamento" data-servico="Licenciamento ambiental"><span class="tag">Com licenciamento</span><div class="ph"><img src="img/s-regularizada.jpg" alt="Equipe da Castor e consultora ambiental avaliando o local" loading="lazy"></div><div class="body"><h3>Supressão regularizada</h3><p>Serviço completo, do licenciamento ambiental à execução. Você não precisa se preocupar com a documentação: cuidamos de tudo junto com a nossa parceira Luz Consultoria Ambiental.</p><span class="more">Pedir orçamento <svg class="ico"><use href="#i-arrow"/></svg></span></div></a>
+      <a class="svc card rv" href="#orcamento" data-servico="Manutenção periódica"><div class="ph"><img src="img/s-condominio.jpg" alt="Palmeiras na área de lazer de um condomínio" loading="lazy"></div><div class="body"><h3>Manutenção para condomínios e empresas</h3><p>Visitas programadas para manter as áreas verdes em ordem, com avaliação periódica das árvores e prevenção de riscos.</p><span class="more">Pedir orçamento <svg class="ico"><use href="#i-arrow"/></svg></span></div></a>
+      <a class="svc card rv" href="#orcamento" data-servico="Emergência"><div class="ph"><img src="img/s-emergencial.jpg" alt="Árvore com galhos próximos a um prédio" loading="lazy"></div><div class="body"><h3>Atendimento emergencial</h3><p>Árvore caída ou com risco iminente após temporais? Entre em contato para atendimento prioritário.</p><span class="more">Pedir orçamento <svg class="ico"><use href="#i-arrow"/></svg></span></div></a>
+      <a class="svc card rv" href="#orcamento" data-servico="Supressão"><div class="ph"><img src="img/s-limpeza.jpg" alt="Toras de palmeira organizadas após o serviço" loading="lazy"></div><div class="body"><h3>Limpeza e destinação dos resíduos</h3><p>Ao final de cada serviço, o local é entregue limpo, com o recolhimento de galhos, troncos e folhas.</p><span class="more">Pedir orçamento <svg class="ico"><use href="#i-arrow"/></svg></span></div></a>
+    </div>
+  </div>
+</section>
+
+<section class="wrap" id="licenciamento" style="padding-bottom:clamp(64px,9vw,112px)">
+  <div class="partner rv">
+    <div class="txt">
+      <span class="eyebrow">Parceria</span>
+      <h2 class="h2">Poda e supressão com licenciamento ambiental</h2>
+      <p>A supressão e alguns tipos de poda exigem autorização dos órgãos ambientais. Em parceria com a Luz Consultoria Ambiental, especialista em licenciamento no RS, cuidamos da documentação e da execução. Você tem o serviço regularizado, com segurança e responsabilidade ambiental.</p>
+      <div><a class="btn light" href="https://luzconsultoriaambiental.com.br/" target="_blank" rel="noopener">Conheça a Luz Consultoria Ambiental <svg class="ico"><use href="#i-arrow"/></svg></a></div>
+    </div>
+    <div class="luz"><img src="img/luz.jpg" alt="Ilustração da consultora da Luz Consultoria Ambiental" loading="lazy"></div>
+  </div>
+</section>
+
+<section class="sec alt line-top" id="como-funciona" style="border-bottom:var(--traco)">
+  <div class="wrap">
+    <div class="sec-head"><div><span class="eyebrow">Como funciona</span><h2 class="h2">Do orçamento à árvore cuidada, em 4 etapas</h2></div></div>
+    <div class="steps" id="steps">
+      <div class="step card"><span class="n">1</span><h3>Solicitação de orçamento</h3><p>Preencha o formulário ou chame no WhatsApp, de preferência com fotos da árvore.</p></div>
+      <div class="step card"><span class="n">2</span><h3>Avaliação técnica</h3><p>Analisamos a árvore e o local para indicar o serviço mais adequado e verificar a necessidade de licenciamento.</p></div>
+      <div class="step card cond"><span class="n">3</span><h3>Licenciamento ambiental</h3><p>Quando necessário, a Luz Consultoria Ambiental conduz a autorização junto aos órgãos competentes.</p><small>Quando necessário</small></div>
+      <div class="step card"><span class="n">4</span><h3>Execução e limpeza</h3><p>Realizamos o serviço com segurança e entregamos o local limpo.</p></div>
+    </div>
+  </div>
+</section>
+
+<section class="sec" id="area">
+  <div class="wrap area">
+    <div class="area-text">
+      <span class="eyebrow">Área de atendimento</span>
+      <h2 class="h2">Atendemos Porto Alegre e Região Metropolitana</h2>
+      <div class="chips" id="chips"></div>
+      <p class="lead">Sua cidade não está na lista? <a href="https://wa.me/5551981030680?text=Ol%C3%A1%2C%20Castor%21%20Vim%20pelo%20site%20e%20gostaria%20de%20mais%20informa%C3%A7%C3%B5es%20sobre%20os%20servi%C3%A7os." target="_blank" rel="noopener"><b>Fale com a gente</b></a> e consulte a disponibilidade.</p>
+    </div>
+    <div class="map rv" aria-label="Mapa ilustrado das cidades atendidas">
+      <svg viewBox="0 0 520 440" id="mapsvg">
+        <path d="M160 300 C150 340 170 380 210 410 L250 440 L120 440 C110 400 120 350 160 300Z" fill="#EAE3C2"/>
+        <path d="M190 250 C210 280 200 320 225 350 C240 375 260 400 255 440 L300 440 C300 400 280 360 265 330 C245 290 240 260 215 240Z" fill="#E2D8B3"/>
+        <text x="190" y="420" font-family="Montserrat" font-size="12" font-weight="600" fill="#8A7458">Lago Guaíba</text>
+        <path d="M60 330 C120 250 160 280 210 220 S300 120 380 140 S470 90 480 60" fill="none" stroke="#DCD0A6" stroke-width="10" stroke-linecap="round" stroke-dasharray="2 16"/>
+        <g id="pins"></g>
+      </svg>
+    </div>
+  </div>
+</section>
+
+<section class="sec alt line-top" id="trabalhos">
+  <div class="wrap">
+    <div class="sec-head">
+      <div><span class="eyebrow">Trabalhos realizados</span><h2 class="h2">Antes e depois</h2><p class="lead">Confira alguns serviços realizados pela nossa equipe. Arraste a barra para comparar.</p></div>
+      <a class="btn ghost" href="https://www.instagram.com/castorarboricultura" target="_blank" rel="noopener"><svg class="ico"><use href="#i-ig"/></svg>Ver mais no Instagram</a>
+    </div>
+    <div class="compare-grid">
+      <figure class="cmp rv" style="margin:0">
+        <div class="cmp-box"><img src="img/ad-pauferro-antes.jpg" alt="Pau-ferro antes da poda" loading="lazy"><img class="after" src="img/ad-pauferro-depois.jpg" alt="Pau-ferro depois da poda" loading="lazy"><span class="lbl l">Antes</span><span class="lbl r">Depois</span><span class="bar"></span><span class="knob"><svg class="ico"><use href="#i-lr"/></svg></span><input type="range" min="0" max="100" value="50" aria-label="Comparar antes e depois da poda do pau-ferro" id="cmp1"></div>
+        <figcaption><strong>Poda de pau-ferro</strong> · limpeza e equilíbrio da copa</figcaption>
+      </figure>
+      <figure class="cmp rv" style="margin:0">
+        <div class="cmp-box"><img src="img/ad-palmeira-antes.jpg" alt="Palmeiras jerivá antes da poda" loading="lazy"><img class="after" src="img/ad-palmeira-depois.jpg" alt="Palmeiras jerivá depois da poda" loading="lazy"><span class="lbl l">Antes</span><span class="lbl r">Depois</span><span class="bar"></span><span class="knob"><svg class="ico"><use href="#i-lr"/></svg></span><input type="range" min="0" max="100" value="50" aria-label="Comparar antes e depois da poda das palmeiras" id="cmp2"></div>
+        <figcaption><strong>Poda de jerivás</strong> · Porto Alegre</figcaption>
+      </figure>
+      <figure class="cmp rv" style="margin:0">
+        <div class="cmp-box static"><img src="img/ad-supressao.jpg" alt="Etapas de uma supressão: árvore, corte e toras organizadas" loading="lazy" style="width:100%;height:100%;object-fit:cover"></div>
+        <figcaption><strong>Supressão completa</strong> · do corte à limpeza</figcaption>
+      </figure>
+    </div>
+    <div class="insta">
+      <div class="insta-head"><h3>@castorarboricultura</h3></div>
+      <div class="insta-grid">
+        <a class="ph" href="https://www.instagram.com/castorarboricultura" target="_blank" rel="noopener"><img src="img/g1.jpg" alt="Palmeira após a poda" loading="lazy"><svg class="ico ig"><use href="#i-ig"/></svg></a>
+        <a class="ph" href="https://www.instagram.com/castorarboricultura" target="_blank" rel="noopener"><img src="img/g2.jpg" alt="Arborista no tronco de palmeira" loading="lazy"><svg class="ico ig"><use href="#i-ig"/></svg></a>
+        <a class="ph" href="https://www.instagram.com/castorarboricultura" target="_blank" rel="noopener"><img src="img/g3.jpg" alt="Equipe na escada durante supressão de palmeira" loading="lazy"><svg class="ico ig"><use href="#i-ig"/></svg></a>
+        <a class="ph" href="https://www.instagram.com/castorarboricultura" target="_blank" rel="noopener"><img src="img/g4.jpg" alt="Levantamento de copa" loading="lazy"><svg class="ico ig"><use href="#i-ig"/></svg></a>
+        <a class="ph" href="https://www.instagram.com/castorarboricultura" target="_blank" rel="noopener"><img src="img/g5.jpg" alt="Palmeira com escada para poda" loading="lazy"><svg class="ico ig"><use href="#i-ig"/></svg></a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="sec line-top" id="faq">
+  <div class="wrap faq">
+    <div class="faq-side">
+      <span class="eyebrow">Dúvidas</span>
+      <h2 class="h2">Perguntas frequentes</h2>
+      <p class="lead">Ficou alguma dúvida? Chame a gente no WhatsApp.</p>
+      <div><a class="btn ghost" href="https://wa.me/5551981030680?text=Ol%C3%A1%2C%20Castor%21%20Vim%20pelo%20site%20e%20gostaria%20de%20mais%20informa%C3%A7%C3%B5es%20sobre%20os%20servi%C3%A7os." target="_blank" rel="noopener"><svg class="ico"><use href="#i-chat"/></svg>Falar no WhatsApp</a></div>
+    </div>
+    <div class="faq-list">
+      <details open><summary>Preciso de autorização para podar ou cortar uma árvore?<span class="pm"><svg class="ico"><use href="#i-plus"/></svg></span></summary><p class="ans">Na maioria dos casos de supressão, sim, e alguns tipos de poda também exigem autorização. Na avaliação, verificamos a sua situação e, se for preciso, o licenciamento é feito pela nossa parceira Luz Consultoria Ambiental.</p></details>
+      <details><summary>Quanto tempo demora o licenciamento?<span class="pm"><svg class="ico"><use href="#i-plus"/></svg></span></summary><p class="ans">O prazo depende do órgão responsável e do tipo de intervenção. Informamos a estimativa no momento do orçamento e acompanhamos o processo até a liberação.</p></details>
+      <details><summary>Como é feito o orçamento?<span class="pm"><svg class="ico"><use href="#i-plus"/></svg></span></summary><p class="ans">Pelo formulário ou pelo WhatsApp. Com fotos da árvore e a localização, já conseguimos passar uma estimativa. Em alguns casos, fazemos uma visita técnica.</p></details>
+      <details><summary>Vocês recolhem os galhos e o tronco?<span class="pm"><svg class="ico"><use href="#i-plus"/></svg></span></summary><p class="ans">Sim. Ao final do serviço, o local é entregue limpo, com o recolhimento de galhos, troncos e folhas.</p></details>
+      <details><summary>Atendem árvores próximas à rede elétrica?<span class="pm"><svg class="ico"><use href="#i-plus"/></svg></span></summary><p class="ans">Depende do caso. Árvores em contato com a rede elétrica costumam ser responsabilidade da concessionária de energia. Envie uma foto pelo WhatsApp e orientamos o melhor caminho.</p></details>
+      <details><summary>Quais são as formas de pagamento?<span class="pm"><svg class="ico"><use href="#i-plus"/></svg></span></summary><p class="ans">Pix, cartão e boleto. As condições de parcelamento são informadas no orçamento.</p></details>
+    </div>
+  </div>
+</section>
+
+<section class="sec alt line-top" id="orcamento">
+  <div class="wrap quote-sec">
+    <div class="q-side">
+      <span class="eyebrow">Orçamento</span>
+      <h2 class="h2">Solicite seu orçamento sem compromisso</h2>
+      <p class="lead">Preencha os dados abaixo e retornaremos pelo WhatsApp com agilidade.</p>
+      <a class="wa-card" href="https://wa.me/5551981030680?text=Ol%C3%A1%2C%20Castor%21%20Vim%20pelo%20site%20e%20gostaria%20de%20mais%20informa%C3%A7%C3%B5es%20sobre%20os%20servi%C3%A7os." target="_blank" rel="noopener"><span class="c"><svg class="ico" style="width:26px;height:26px"><use href="#i-chat"/></svg></span><span><small>Prefere falar direto?</small><b>(51) 98103-0680</b></span></a>
+      <div class="q-photo ph"><img src="img/equipe2.jpg" alt="Profissional da Castor indicando os galhos que serão podados" loading="lazy"></div>
+    </div>
+    <form class="card" id="form" novalidate>
+      <div id="formBody" style="display:flex;flex-direction:column;gap:24px">
+        <div class="row2">
+          <div class="f" id="f-nome"><label for="nome">Nome *</label><input type="text" id="nome" name="nome" autocomplete="name" placeholder="Seu nome"><span class="err" hidden>Informe seu nome.</span></div>
+          <div class="f" id="f-wa"><label for="whats">WhatsApp *</label><input type="tel" id="whats" name="whats" autocomplete="tel" placeholder="(51) 90000-0000"><span class="err" hidden>Informe um WhatsApp com DDD.</span></div>
+        </div>
+        <div class="f" id="f-cid"><label for="cidade">Cidade e bairro *</label><input type="text" id="cidade" name="cidade" placeholder="Ex.: Porto Alegre, Petrópolis"><span class="err" hidden>Informe a cidade e o bairro.</span></div>
+        <fieldset class="f"><legend>Tipo de imóvel</legend><div class="opts">
+          <label class="opt"><input type="radio" name="tipo" value="Residência" id="t1"><span>Residência</span></label>
+          <label class="opt"><input type="radio" name="tipo" value="Condomínio" id="t2"><span>Condomínio</span></label>
+          <label class="opt"><input type="radio" name="tipo" value="Empresa" id="t3"><span>Empresa</span></label>
+          <label class="opt"><input type="radio" name="tipo" value="Terreno ou obra" id="t4"><span>Terreno ou obra</span></label>
+        </div></fieldset>
+        <fieldset class="f"><legend>Serviço desejado (pode marcar mais de um)</legend><div class="opts" id="servOpts">
+          <label class="opt"><input type="checkbox" name="servico" value="Poda" id="s1"><span>Poda</span></label>
+          <label class="opt"><input type="checkbox" name="servico" value="Supressão" id="s2"><span>Supressão</span></label>
+          <label class="opt"><input type="checkbox" name="servico" value="Licenciamento ambiental" id="s3"><span>Licenciamento ambiental</span></label>
+          <label class="opt"><input type="checkbox" name="servico" value="Manutenção periódica" id="s4"><span>Manutenção periódica</span></label>
+          <label class="opt"><input type="checkbox" name="servico" value="Emergência" id="s5"><span>Emergência</span></label>
+          <label class="opt"><input type="checkbox" name="servico" value="Não sei, preciso de orientação" id="s6"><span>Não sei, preciso de orientação</span></label>
+        </div></fieldset>
+        <div class="row2">
+          <fieldset class="f"><legend>Já possui autorização ambiental?</legend><div class="opts">
+            <label class="opt"><input type="radio" name="aut" value="Sim" id="a1"><span>Sim</span></label>
+            <label class="opt"><input type="radio" name="aut" value="Não" id="a2"><span>Não</span></label>
+            <label class="opt"><input type="radio" name="aut" value="Não sei" id="a3"><span>Não sei</span></label>
+          </div></fieldset>
+          <div class="f"><label for="quando">Quando precisa?</label><select id="quando" name="quando"><option value="">Selecione</option><option>Urgente</option><option>Nesta semana</option><option>Nos próximos 30 dias</option><option>Sem pressa</option></select></div>
+        </div>
+        <div class="tip"><svg class="ico"><use href="#i-chat"/></svg><span>Ao enviar, abrimos o WhatsApp da Castor com o seu pedido já preenchido. Lá você também pode mandar as fotos da árvore.</span></div>
+        <div class="f"><label for="msg">Mensagem (opcional)</label><textarea id="msg" name="msg" placeholder="Conte um pouco sobre a árvore e o local"></textarea></div>
+        <a class="btn submit" id="sendBtn" href="https://wa.me/5551981030680?text=Ol%C3%A1%2C%20Castor%21%20Vim%20pelo%20site%20e%20gostaria%20de%20mais%20informa%C3%A7%C3%B5es%20sobre%20os%20servi%C3%A7os." target="_blank" rel="noopener"><svg class="ico"><use href="#i-chat"/></svg>Enviar pedido pelo WhatsApp</a>
+        <p class="note">Prefere falar direto? Chame no WhatsApp (51) 98103-0680.</p>
+      </div>
+      <div class="done" id="done" hidden>
+        <span class="tile"><svg class="ico"><use href="#i-shield"/></svg></span>
+        <p class="big">Recebemos o seu pedido!</p>
+        <p class="lead">Abrimos o WhatsApp da Castor com o seu pedido preenchido. É só tocar em enviar na conversa e, se puder, mandar fotos da árvore. Se a conversa não abriu, use o botão abaixo.</p>
+        <a class="btn" id="waSend" href="https://wa.me/5551981030680?text=Ol%C3%A1%2C%20Castor%21%20Vim%20pelo%20site%20e%20gostaria%20de%20mais%20informa%C3%A7%C3%B5es%20sobre%20os%20servi%C3%A7os." target="_blank" rel="noopener"><svg class="ico"><use href="#i-chat"/></svg>Abrir o WhatsApp novamente</a>
+      </div>
+    </form>
+  </div>
+</section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <div class="foot">
+      <div class="b"><img src="img/logo-creme.png" alt="Castor Arboricultura"><p>Poda e supressão de árvores em Porto Alegre e Região Metropolitana</p></div>
+      <div><h4>Contato</h4><a class="soc" href="https://wa.me/5551981030680?text=Ol%C3%A1%2C%20Castor%21%20Vim%20pelo%20site%20e%20gostaria%20de%20mais%20informa%C3%A7%C3%B5es%20sobre%20os%20servi%C3%A7os." target="_blank" rel="noopener"><span class="si"><svg class="ico"><use href="#i-chat"/></svg></span>(51) 98103-0680</a><a class="soc" href="https://www.instagram.com/castorarboricultura" target="_blank" rel="noopener"><span class="si"><svg class="ico"><use href="#i-ig"/></svg></span>@castorarboricultura</a></div>
+      <div><h4>Licenciamento</h4><span>Licenciamento ambiental em parceria com <a href="https://luzconsultoriaambiental.com.br/" target="_blank" rel="noopener" style="display:inline">Luz Consultoria Ambiental</a></span></div>
+    </div>
+    <div class="legal"><span>© <span id="ano">2026</span> Castor Arboricultura · CNPJ 62.775.000/0001-10</span><span>Política de privacidade</span></div>
+  </div>
+</footer>
+
+<a class="fab" href="https://wa.me/5551981030680?text=Ol%C3%A1%2C%20Castor%21%20Vim%20pelo%20site%20e%20gostaria%20de%20mais%20informa%C3%A7%C3%B5es%20sobre%20os%20servi%C3%A7os." target="_blank" rel="noopener" aria-label="Falar no WhatsApp"><svg class="ico"><use href="#i-chat"/></svg></a>
+<div class="mbar"><a class="btn" href="#orcamento">Orçamento grátis</a><a class="btn ghost" href="https://wa.me/5551981030680?text=Ol%C3%A1%2C%20Castor%21%20Vim%20pelo%20site%20e%20gostaria%20de%20mais%20informa%C3%A7%C3%B5es%20sobre%20os%20servi%C3%A7os." target="_blank" rel="noopener"><svg class="ico" style="width:20px;height:20px"><use href="#i-chat"/></svg>WhatsApp</a></div>
+
+<script>
+(function(){
+  document.documentElement.classList.add('js');
+  var reduce = window.matchMedia && matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  // Header compacto ao rolar
+  var top = document.getElementById('top');
+  function onScroll(){ top.classList.toggle('small', window.scrollY > 40); }
+  window.addEventListener('scroll', onScroll, {passive:true}); onScroll();
+
+  // Menu mobile
+  var mb = document.getElementById('menuBtn'), mn = document.getElementById('mnav');
+  mb.addEventListener('click', function(){ var o = mn.classList.toggle('open'); mb.setAttribute('aria-expanded', o); mb.setAttribute('aria-label', o ? 'Fechar menu' : 'Abrir menu'); });
+  mn.addEventListener('click', function(e){ if(e.target.tagName === 'A'){ mn.classList.remove('open'); mb.setAttribute('aria-expanded', false); } });
+
+  // Revelação suave: só elementos abaixo da dobra deslizam; tudo segue visível
+  if('IntersectionObserver' in window && !reduce){
+    var io = new IntersectionObserver(function(es){ es.forEach(function(e){ if(e.isIntersecting){ e.target.classList.add('in'); io.unobserve(e.target); } }); }, {threshold:.12});
+    document.querySelectorAll('.rv').forEach(function(el, i){
+      if(el.getBoundingClientRect().top > window.innerHeight){ el.classList.add('pre'); el.style.transitionDelay = ((i % 3) * 0.08) + 's'; io.observe(el); }
+    });
+    var steps = document.getElementById('steps');
+    var so = new IntersectionObserver(function(es){ if(es[0].isIntersecting){ steps.classList.add('in'); so.disconnect(); } }, {threshold:.3});
+    so.observe(steps);
+  } else { document.getElementById('steps').classList.add('in'); }
+
+  // Comparadores antes e depois
+  document.querySelectorAll('.cmp-box input[type=range]').forEach(function(r){
+    var box = r.parentElement;
+    function set(){ box.style.setProperty('--x', r.value + '%'); }
+    r.addEventListener('input', set); set();
+  });
+
+  // Mapa de cidades
+  var cities = [
+    ['Porto Alegre',255,300,1],['Canoas',245,215],['Esteio',258,170],['Sapucaia do Sul',272,138],['São Leopoldo',262,100],['Novo Hamburgo',290,62],
+    ['Cachoeirinha',318,232],['Gravataí',380,215],['Alvorada',345,290],['Viamão',390,345],['Guaíba',150,355],['Eldorado do Sul',110,280]
+  ];
+  var ns = 'http://www.w3.org/2000/svg', g = document.getElementById('pins'), chips = document.getElementById('chips');
+  cities.forEach(function(c, i){
+    var p = document.createElementNS(ns,'g'); p.setAttribute('class','pin' + (c[3] ? ' main' : '')); p.setAttribute('tabindex','-1');
+    if(c[3]){ var ring = document.createElementNS(ns,'circle'); ring.setAttribute('class','ring'); ring.setAttribute('cx',c[1]); ring.setAttribute('cy',c[2]); ring.setAttribute('r',14); g.appendChild(ring); }
+    var ci = document.createElementNS(ns,'circle'); ci.setAttribute('cx',c[1]); ci.setAttribute('cy',c[2]); ci.setAttribute('r', c[3] ? 14 : 10);
+    var t = document.createElementNS(ns,'text'); if(c[3]){ t.setAttribute('x', c[1] - 22); t.setAttribute('text-anchor','end'); } else { t.setAttribute('x', c[1] + 18); } t.setAttribute('y', c[2] + 5); t.textContent = c[0];
+    p.appendChild(ci); p.appendChild(t); g.appendChild(p);
+    var b = document.createElement('span'); b.className = 'chip'; b.innerHTML = '<svg class="ico"><use href="#i-pin"/></svg>' + c[0];
+    function on(){ p.classList.add('on'); b.classList.add('on'); } function off(){ p.classList.remove('on'); b.classList.remove('on'); }
+    b.addEventListener('mouseenter', on); b.addEventListener('mouseleave', off);
+    p.addEventListener('mouseenter', on); p.addEventListener('mouseleave', off);
+    chips.appendChild(b);
+  });
+
+  // Cards de serviço pré-selecionam o serviço no formulário
+  document.querySelectorAll('.svc[data-servico]').forEach(function(a){
+    a.addEventListener('click', function(){
+      var v = a.getAttribute('data-servico');
+      document.querySelectorAll('#servOpts input').forEach(function(i){ if(i.value === v) i.checked = true; });
+    });
+  });
+
+  // Formulário: monta a mensagem e abre o WhatsApp
+  var form = document.getElementById('form'), send = document.getElementById('sendBtn');
+  function check(id, ok){ var f = document.getElementById(id); f.classList.toggle('bad', !ok); f.querySelector('.err').hidden = ok; return ok; }
+  function texto(){
+    var servs = Array.prototype.map.call(form.querySelectorAll('input[name=servico]:checked'), function(i){ return i.value; });
+    var tipo = (form.querySelector('input[name=tipo]:checked') || {}).value || 'não informado';
+    var aut = (form.querySelector('input[name=aut]:checked') || {}).value || 'não informado';
+    return 'Olá, Castor! Vim pelo site e gostaria de um orçamento.\n\nNome: ' + form.nome.value.trim() + '\nWhatsApp: ' + form.whats.value.trim() + '\nCidade e bairro: ' + form.cidade.value.trim() + '\nTipo de imóvel: ' + tipo + '\nServiço: ' + (servs.join(', ') || 'não informado') + '\nJá possui autorização ambiental: ' + aut + '\nQuando precisa: ' + (form.quando.value || 'não informado') + (form.msg.value.trim() ? '\nMensagem: ' + form.msg.value.trim() : '');
+  }
+  function update(){ var url = 'https://wa.me/5551981030680?text=' + encodeURIComponent(texto()); send.href = url; document.getElementById('waSend').href = url; }
+  form.addEventListener('input', update); form.addEventListener('change', update); update();
+  function valid(){
+    var ok = [check('f-nome', form.nome.value.trim().length > 1), check('f-wa', form.whats.value.replace(/\D/g,'').length >= 10), check('f-cid', form.cidade.value.trim().length > 2)];
+    if(ok.indexOf(false) > -1){ var first = form.querySelector('.bad input'); if(first) first.focus(); return false; }
+    return true;
+  }
+  send.addEventListener('click', function(e){
+    update();
+    if(!valid()){ e.preventDefault(); return; }
+    setTimeout(function(){ document.getElementById('formBody').hidden = true; document.getElementById('done').hidden = false; }, 300);
+  });
+  form.addEventListener('submit', function(e){ e.preventDefault(); if(valid()) send.click(); });
+
+  document.getElementById('ano').textContent = new Date().getFullYear();
+})();
+</script>
+
+</body>
+</html>
