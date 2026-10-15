@@ -258,7 +258,7 @@ fieldset legend{margin-bottom:10px}
 
 /* Rodapé */
 footer{background:var(--marrom);color:var(--creme);padding-block:64px 32px}
-.foot{display:grid;grid-template-columns:minmax(0,1.3fr) minmax(0,1fr) minmax(0,1fr);gap:48px}
+.foot{display:grid;grid-template-columns:minmax(0,1.3fr) minmax(0,1fr);gap:48px;align-items:center}
 .foot .b{display:flex;gap:20px;align-items:center}
 .foot .b img{width:88px}
 .foot p,.foot span{color:var(--texto-claro);font-size:15px;line-height:1.6}
@@ -289,7 +289,13 @@ footer{background:var(--marrom);color:var(--creme);padding-block:64px 32px}
   .mobile-nav{display:block;position:fixed;inset:76px 0 auto 0;z-index:49;background:var(--creme);border-bottom:var(--traco);padding:20px var(--gutter) 28px;transform:translateY(-120%);transition:transform .35s var(--ease)}
   .mobile-nav.open{transform:none}
   .mobile-nav a{display:block;padding:14px 0;font-family:var(--display);font-size:22px;text-decoration:none;border-bottom:1px solid var(--creme-2)}
-  .cred-box{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .cred{padding-top:36px}
+  .cred-box{grid-template-columns:repeat(2,minmax(0,1fr));gap:14px 16px;padding:16px 18px;border-radius:18px}
+  .cred-item{flex-direction:row;align-items:center;gap:10px}
+  .cred-item .dot{width:36px;height:36px;flex:none}
+  .cred-item .dot .ico{width:19px!important;height:19px!important}
+  .cred-item strong{font-size:14px;line-height:1.25}
+  .cred-item>span:not(.dot){display:none}
   .services,.compare-grid{grid-template-columns:repeat(2,minmax(0,1fr))}
   .steps{grid-template-columns:repeat(2,minmax(0,1fr))}
   .steps::before{display:none}
@@ -309,7 +315,8 @@ footer{background:var(--marrom);color:var(--creme);padding-block:64px 32px}
 }
 @media (max-width:620px){
   body{font-size:15px}
-  .cred-box,.services,.compare-grid,.steps,.row2{grid-template-columns:minmax(0,1fr)}
+  .services,.compare-grid,.steps,.row2{grid-template-columns:minmax(0,1fr)}
+  .cred-item strong{font-size:13px}
   .insta-grid{grid-template-columns:repeat(2,minmax(0,1fr))}
   .insta-grid a:nth-child(3){display:none}
   .hero-ctas .btn{width:100%}
@@ -595,7 +602,7 @@ footer{background:var(--marrom);color:var(--creme);padding-block:64px 32px}
     <div class="foot">
       <div class="b"><img src="img/logo-creme.png" alt="Castor Arboricultura"><p>Poda e supressão de árvores em Porto Alegre e Região Metropolitana</p></div>
       <div><h4>Contato</h4><a class="soc" href="https://wa.me/5551981030680?text=Ol%C3%A1%2C%20Castor%21%20Vim%20pelo%20site%20e%20gostaria%20de%20mais%20informa%C3%A7%C3%B5es%20sobre%20os%20servi%C3%A7os." target="_blank" rel="noopener"><span class="si"><svg class="ico"><use href="#i-chat"/></svg></span>(51) 98103-0680</a><a class="soc" href="https://www.instagram.com/castorarboricultura" target="_blank" rel="noopener"><span class="si"><svg class="ico"><use href="#i-ig"/></svg></span>@castorarboricultura</a></div>
-      <div><h4>Licenciamento</h4><span>Licenciamento ambiental em parceria com <a href="https://luzconsultoriaambiental.com.br/" target="_blank" rel="noopener" style="display:inline">Luz Consultoria Ambiental</a></span></div>
+      
     </div>
     <div class="legal"><span>© <span id="ano">2026</span> Castor Arboricultura · CNPJ 62.775.000/0001-10</span><span>Política de privacidade</span></div>
   </div>
