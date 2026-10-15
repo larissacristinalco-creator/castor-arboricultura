@@ -277,7 +277,6 @@ footer{background:var(--marrom);color:var(--creme);padding-block:64px 32px}
 .fab::before{content:"";position:absolute;inset:-3px;border-radius:50%;border:3px solid var(--laranja);animation:pulse 2.4s ease-out infinite}
 .fab .ico{width:30px;height:30px}
 @keyframes pulse{from{transform:scale(1);opacity:.8}to{transform:scale(1.6);opacity:0}}
-.mbar{display:none}
 
 /* Reveal ao rolar: o conteúdo fica sempre visível; só desliza */
 .js .rv.pre{transform:translateY(36px);transition:transform .9s var(--ease)}
@@ -317,10 +316,8 @@ footer{background:var(--marrom);color:var(--creme);padding-block:64px 32px}
   .sticker{right:4px;font-size:14px}
   .badge{width:132px}
   .badge text{font-size:9.5px}
-  .fab{display:none}
-  .mbar{display:flex;gap:10px;position:fixed;left:0;right:0;bottom:0;z-index:60;background:var(--creme);border-top:var(--traco);padding:10px 16px calc(10px + env(safe-area-inset-bottom,0px))}
-  .mbar .btn{flex:1;min-height:50px;font-size:14px;padding:0 10px;box-shadow:3px 3px 0 var(--marrom)}
-  footer{padding-bottom:110px}
+  .fab{width:56px;height:56px;right:16px;bottom:calc(16px + env(safe-area-inset-bottom,0px))}
+  .fab .ico{width:26px;height:26px}
   .ticker span{font-size:18px}
 }
 @media (prefers-reduced-motion:reduce){
@@ -382,7 +379,7 @@ footer{background:var(--marrom);color:var(--creme);padding-block:64px 32px}
       <div class="hero-photo ph"><img src="img/hero.jpg" alt="Arborista da Castor com equipamento de segurança trabalhando na copa de uma palmeira"></div>
       <span class="sticker">Orçamento grátis!</span>
       <div class="badge">
-        <svg viewBox="0 0 200 200" aria-hidden="true"><defs><path id="circ" d="M100,100 m-86,0 a86,86 0 1,1 172,0 a86,86 0 1,1 -172,0"/></defs><text><textPath href="#circ">PODA · SUPRESSÃO · LICENCIAMENTO · PORTO ALEGRE ·</textPath></text></svg>
+        <svg viewBox="0 0 200 200" aria-hidden="true"><defs><path id="circ" d="M100,100 m-86,0 a86,86 0 1,1 172,0 a86,86 0 1,1 -172,0"/></defs><text><textPath href="#circ" textLength="538" lengthAdjust="spacing">PODA · SUPRESSÃO · LICENCIAMENTO · PORTO ALEGRE · </textPath></text></svg>
         <img src="img/logo-marrom.png" alt="">
       </div>
     </div>
@@ -605,7 +602,7 @@ footer{background:var(--marrom);color:var(--creme);padding-block:64px 32px}
 </footer>
 
 <a class="fab" href="https://wa.me/5551981030680?text=Ol%C3%A1%2C%20Castor%21%20Vim%20pelo%20site%20e%20gostaria%20de%20mais%20informa%C3%A7%C3%B5es%20sobre%20os%20servi%C3%A7os." target="_blank" rel="noopener" aria-label="Falar no WhatsApp"><svg class="ico"><use href="#i-chat"/></svg></a>
-<div class="mbar"><a class="btn" href="#orcamento">Orçamento grátis</a><a class="btn ghost" href="https://wa.me/5551981030680?text=Ol%C3%A1%2C%20Castor%21%20Vim%20pelo%20site%20e%20gostaria%20de%20mais%20informa%C3%A7%C3%B5es%20sobre%20os%20servi%C3%A7os." target="_blank" rel="noopener"><svg class="ico" style="width:20px;height:20px"><use href="#i-chat"/></svg>WhatsApp</a></div>
+
 
 <script>
 (function(){
